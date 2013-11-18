@@ -1,0 +1,10 @@
+.DS_Store
+volley/*
+!volley/README.txt
+
+# kiilib
+kiilib/bin/
+kiilib/gen/
+kiilib/build/
+
+
