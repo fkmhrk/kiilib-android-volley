@@ -2,7 +2,7 @@ package jp.fkmsoft.libs.kiilib.volley;
 
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiUser;
-import jp.fkmsoft.libs.kiilib.KiiUserAPI;
+import jp.fkmsoft.libs.kiilib.UserAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 
-class KiiVolleyUserAPI implements KiiUserAPI {
+class KiiVolleyUserAPI implements UserAPI {
 
     private final KiiVolleyAPI api;
     

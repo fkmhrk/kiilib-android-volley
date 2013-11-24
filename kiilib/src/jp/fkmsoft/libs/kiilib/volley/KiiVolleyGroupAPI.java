@@ -6,7 +6,7 @@ import java.util.List;
 
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiGroup;
-import jp.fkmsoft.libs.kiilib.KiiGroupAPI;
+import jp.fkmsoft.libs.kiilib.GroupAPI;
 import jp.fkmsoft.libs.kiilib.KiiUser;
 
 import org.json.JSONArray;
@@ -19,7 +19,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 
-class KiiVolleyGroupAPI implements KiiGroupAPI {
+class KiiVolleyGroupAPI implements GroupAPI {
 
     private final KiiVolleyAPI api;
     

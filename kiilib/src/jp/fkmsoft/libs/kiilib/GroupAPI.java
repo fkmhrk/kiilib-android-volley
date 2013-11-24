@@ -3,11 +3,11 @@ package jp.fkmsoft.libs.kiilib;
 import java.util.List;
 
 /**
- * Provides group API. To get this instance, Please call {@link KiiAPI#groupAPI()}
+ * Provides group API. To get this instance, Please call {@link AppAPI#groupAPI()}
  * @author fkm
  *
  */
-public interface KiiGroupAPI {
+public interface GroupAPI {
     public interface ListCallback extends KiiCallback {
         void onSuccess(List<KiiGroup> result);
     }

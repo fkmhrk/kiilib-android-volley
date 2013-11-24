@@ -7,7 +7,7 @@ import java.util.List;
  * @author fkm
  *
  */
-public interface KiiTopicAPI {
+public interface TopicAPI {
     public interface TopicCallback extends KiiCallback {
         void onSuccess(KiiTopic topic);
     }

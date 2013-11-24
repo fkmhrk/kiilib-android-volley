@@ -1,14 +1,14 @@
 package jp.fkmsoft.libs.kiilib.volley;
 
-import jp.fkmsoft.libs.kiilib.KiiACLAPI;
-import jp.fkmsoft.libs.kiilib.KiiAPI;
-import jp.fkmsoft.libs.kiilib.KiiBucketAPI;
+import jp.fkmsoft.libs.kiilib.ACLAPI;
+import jp.fkmsoft.libs.kiilib.AppAPI;
+import jp.fkmsoft.libs.kiilib.BucketAPI;
 import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiGroupAPI;
-import jp.fkmsoft.libs.kiilib.KiiObjectAPI;
-import jp.fkmsoft.libs.kiilib.KiiTopicAPI;
+import jp.fkmsoft.libs.kiilib.GroupAPI;
+import jp.fkmsoft.libs.kiilib.ObjectAPI;
+import jp.fkmsoft.libs.kiilib.TopicAPI;
 import jp.fkmsoft.libs.kiilib.KiiUser;
-import jp.fkmsoft.libs.kiilib.KiiUserAPI;
+import jp.fkmsoft.libs.kiilib.UserAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,9 +20,9 @@ import com.android.volley.Response.Listener;
 
 
 /**
- * Implementation of {@link KiiAPI} for volley
+ * Implementation of {@link AppAPI} for volley
  */
-public class KiiVolleyAPI implements KiiAPI {
+public class KiiVolleyAPI implements AppAPI {
 
     final RequestQueue queue;
     final String appId;
@@ -31,12 +31,12 @@ public class KiiVolleyAPI implements KiiAPI {
     
     String accessToken;
     
-    private final KiiUserAPI userAPI;
-    private final KiiGroupAPI groupAPI;
-    private final KiiBucketAPI bucketAPI;
-    private final KiiObjectAPI objectAPI;
-    private final KiiTopicAPI topicAPI;
-    private final KiiACLAPI aclAPI;
+    private final UserAPI userAPI;
+    private final GroupAPI groupAPI;
+    private final BucketAPI bucketAPI;
+    private final ObjectAPI objectAPI;
+    private final TopicAPI topicAPI;
+    private final ACLAPI aclAPI;
     
     public KiiVolleyAPI(RequestQueue queue, String appId, String appKey, String baseUrl) {
         this.queue = queue;
@@ -174,32 +174,32 @@ public class KiiVolleyAPI implements KiiAPI {
     }
 
     @Override
-    public KiiUserAPI userAPI() {
+    public UserAPI userAPI() {
         return userAPI;
     }
 
     @Override
-    public KiiGroupAPI groupAPI() {
+    public GroupAPI groupAPI() {
         return groupAPI;
     }
 
     @Override
-    public KiiBucketAPI bucketAPI() {
+    public BucketAPI bucketAPI() {
         return bucketAPI;
     }
 
     @Override
-    public KiiObjectAPI objectAPI() {
+    public ObjectAPI objectAPI() {
         return objectAPI;
     }
 
     @Override
-    public KiiTopicAPI topicAPI() {
+    public TopicAPI topicAPI() {
         return topicAPI;
     }
 
     @Override
-    public KiiACLAPI aclAPI() {
+    public ACLAPI aclAPI() {
         return aclAPI;
     }
 }

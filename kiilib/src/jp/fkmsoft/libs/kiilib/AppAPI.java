@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * @author fkm
  *
  */
-public interface KiiAPI {
+public interface AppAPI {
     public interface LoginCallback extends KiiCallback {
         void onSuccess(String token, KiiUser user);
     }
@@ -24,17 +24,17 @@ public interface KiiAPI {
     
     String getAccessToken();
     
-    KiiUserAPI userAPI();
+    UserAPI userAPI();
     
-    KiiGroupAPI groupAPI();
+    GroupAPI groupAPI();
     
-    KiiBucketAPI bucketAPI();
+    BucketAPI bucketAPI();
     
-    KiiObjectAPI objectAPI();
+    ObjectAPI objectAPI();
     
-    KiiTopicAPI topicAPI();
+    TopicAPI topicAPI();
     
-    KiiACLAPI aclAPI();
+    ACLAPI aclAPI();
 
     
 

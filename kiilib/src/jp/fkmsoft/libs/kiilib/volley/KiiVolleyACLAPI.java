@@ -8,7 +8,7 @@ import java.util.Map;
 
 import jp.fkmsoft.libs.kiilib.ACLSubject;
 import jp.fkmsoft.libs.kiilib.AccessControllable;
-import jp.fkmsoft.libs.kiilib.KiiACLAPI;
+import jp.fkmsoft.libs.kiilib.ACLAPI;
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiGroup;
 import jp.fkmsoft.libs.kiilib.KiiUser;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 import com.android.volley.Response.Listener;
 
-class KiiVolleyACLAPI implements KiiACLAPI {
+class KiiVolleyACLAPI implements ACLAPI {
 
     private final KiiVolleyAPI api;
     

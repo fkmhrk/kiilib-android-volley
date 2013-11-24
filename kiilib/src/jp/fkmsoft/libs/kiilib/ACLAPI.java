@@ -9,7 +9,7 @@ import java.util.Map;
  * @author fkm
  *
  */
-public interface KiiACLAPI {
+public interface ACLAPI {
     public interface ACLGetCallback extends KiiCallback {
         void onSuccess(Map<String, List<ACLSubject>> result);
     }

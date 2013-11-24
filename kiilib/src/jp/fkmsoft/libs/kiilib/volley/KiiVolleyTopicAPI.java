@@ -6,7 +6,7 @@ import java.util.List;
 import jp.fkmsoft.libs.kiilib.BucketOwnable;
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiTopic;
-import jp.fkmsoft.libs.kiilib.KiiTopicAPI;
+import jp.fkmsoft.libs.kiilib.TopicAPI;
 import jp.fkmsoft.libs.kiilib.KiiTopicMessage;
 
 import org.json.JSONArray;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response.Listener;
 
-class KiiVolleyTopicAPI implements KiiTopicAPI {
+class KiiVolleyTopicAPI implements TopicAPI {
 
     private final KiiVolleyAPI api;
     

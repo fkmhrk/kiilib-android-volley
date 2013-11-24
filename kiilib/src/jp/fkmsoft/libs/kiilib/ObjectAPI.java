@@ -3,7 +3,7 @@ package jp.fkmsoft.libs.kiilib;
 import org.json.JSONObject;
 
 
-public interface KiiObjectAPI {
+public interface ObjectAPI {
     public interface ObjectCallback extends KiiCallback {
         void onSuccess(KiiObject obj);
     };

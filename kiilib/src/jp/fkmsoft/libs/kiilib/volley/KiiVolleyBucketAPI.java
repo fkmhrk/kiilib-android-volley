@@ -1,7 +1,7 @@
 package jp.fkmsoft.libs.kiilib.volley;
 
 import jp.fkmsoft.libs.kiilib.KiiBucket;
-import jp.fkmsoft.libs.kiilib.KiiBucketAPI;
+import jp.fkmsoft.libs.kiilib.BucketAPI;
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiObject;
 import jp.fkmsoft.libs.kiilib.QueryCondition;
@@ -13,7 +13,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 
-class KiiVolleyBucketAPI implements KiiBucketAPI {
+class KiiVolleyBucketAPI implements BucketAPI {
 
     private final KiiVolleyAPI api;
     

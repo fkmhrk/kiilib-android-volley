@@ -6,7 +6,7 @@ import java.util.Map;
 import jp.fkmsoft.libs.kiilib.KiiBucket;
 import jp.fkmsoft.libs.kiilib.KiiCallback;
 import jp.fkmsoft.libs.kiilib.KiiObject;
-import jp.fkmsoft.libs.kiilib.KiiObjectAPI;
+import jp.fkmsoft.libs.kiilib.ObjectAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request.Method;
 import com.android.volley.Response.Listener;
 
-class KiiVolleyObjectAPI implements KiiObjectAPI {
+class KiiVolleyObjectAPI implements ObjectAPI {
 
     private final KiiVolleyAPI api;
     
