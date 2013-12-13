@@ -1,7 +1,10 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
 
 import java.util.List;
 import java.util.Map;
+
+import jp.fkmsoft.libs.kiilib.entities.ACLSubject;
+import jp.fkmsoft.libs.kiilib.entities.AccessControllable;
 
 
 /**

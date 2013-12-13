@@ -1,4 +1,4 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;

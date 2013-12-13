@@ -1,6 +1,9 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
 
 import java.util.List;
+
+import jp.fkmsoft.libs.kiilib.entities.KiiGroup;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 /**
  * Provides group API. To get this instance, Please call {@link AppAPI#groupAPI()}

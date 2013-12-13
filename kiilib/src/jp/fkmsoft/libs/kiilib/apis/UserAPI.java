@@ -1,4 +1,6 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
+
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 /**
  * Provides User related APIs. To get this instance, Please call {@link AppAPI#userAPI()}

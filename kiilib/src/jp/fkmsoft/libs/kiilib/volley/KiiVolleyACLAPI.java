@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import jp.fkmsoft.libs.kiilib.ACLSubject;
-import jp.fkmsoft.libs.kiilib.AccessControllable;
-import jp.fkmsoft.libs.kiilib.ACLAPI;
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiGroup;
-import jp.fkmsoft.libs.kiilib.KiiUser;
+import jp.fkmsoft.libs.kiilib.apis.ACLAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.entities.ACLSubject;
+import jp.fkmsoft.libs.kiilib.entities.AccessControllable;
+import jp.fkmsoft.libs.kiilib.entities.KiiGroup;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
 
 /**
  * Base interface for each callback

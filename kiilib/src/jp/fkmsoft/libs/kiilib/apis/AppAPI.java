@@ -1,4 +1,6 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
+
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 import org.json.JSONObject;
 

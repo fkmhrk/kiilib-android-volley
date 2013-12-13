@@ -2,7 +2,7 @@ package jp.fkmsoft.libs.kiilib.volley;
 
 import java.io.UnsupportedEncodingException;
 
-import jp.fkmsoft.libs.kiilib.KiiCallback;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response.ErrorListener;

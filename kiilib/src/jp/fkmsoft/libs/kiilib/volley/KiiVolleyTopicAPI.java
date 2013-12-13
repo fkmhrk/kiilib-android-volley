@@ -3,11 +3,11 @@ package jp.fkmsoft.libs.kiilib.volley;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.fkmsoft.libs.kiilib.BucketOwnable;
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiTopic;
-import jp.fkmsoft.libs.kiilib.TopicAPI;
-import jp.fkmsoft.libs.kiilib.KiiTopicMessage;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.apis.TopicAPI;
+import jp.fkmsoft.libs.kiilib.entities.BucketOwnable;
+import jp.fkmsoft.libs.kiilib.entities.KiiTopic;
+import jp.fkmsoft.libs.kiilib.entities.KiiTopicMessage;
 
 import org.json.JSONArray;
 import org.json.JSONException;

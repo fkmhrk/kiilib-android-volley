@@ -1,6 +1,10 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
 
 import java.util.List;
+
+import jp.fkmsoft.libs.kiilib.entities.BucketOwnable;
+import jp.fkmsoft.libs.kiilib.entities.KiiTopic;
+import jp.fkmsoft.libs.kiilib.entities.KiiTopicMessage;
 
 /**
  * Provides topic API.

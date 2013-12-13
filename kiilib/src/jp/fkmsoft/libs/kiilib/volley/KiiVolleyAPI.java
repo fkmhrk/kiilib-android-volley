@@ -1,14 +1,14 @@
 package jp.fkmsoft.libs.kiilib.volley;
 
-import jp.fkmsoft.libs.kiilib.ACLAPI;
-import jp.fkmsoft.libs.kiilib.AppAPI;
-import jp.fkmsoft.libs.kiilib.BucketAPI;
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.GroupAPI;
-import jp.fkmsoft.libs.kiilib.ObjectAPI;
-import jp.fkmsoft.libs.kiilib.TopicAPI;
-import jp.fkmsoft.libs.kiilib.KiiUser;
-import jp.fkmsoft.libs.kiilib.UserAPI;
+import jp.fkmsoft.libs.kiilib.apis.ACLAPI;
+import jp.fkmsoft.libs.kiilib.apis.AppAPI;
+import jp.fkmsoft.libs.kiilib.apis.BucketAPI;
+import jp.fkmsoft.libs.kiilib.apis.GroupAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.apis.ObjectAPI;
+import jp.fkmsoft.libs.kiilib.apis.TopicAPI;
+import jp.fkmsoft.libs.kiilib.apis.UserAPI;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -2,8 +2,8 @@ package jp.fkmsoft.libs.kiilib.volley;
 
 import java.util.ArrayList;
 
-import jp.fkmsoft.libs.kiilib.KiiObject;
-import jp.fkmsoft.libs.kiilib.QueryResult;
+import jp.fkmsoft.libs.kiilib.apis.QueryResult;
+import jp.fkmsoft.libs.kiilib.entities.KiiObject;
 
 class KiiObjectQueryResult extends ArrayList<KiiObject> implements QueryResult {
 

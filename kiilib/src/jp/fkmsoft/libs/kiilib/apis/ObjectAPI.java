@@ -1,4 +1,7 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
+
+import jp.fkmsoft.libs.kiilib.entities.KiiBucket;
+import jp.fkmsoft.libs.kiilib.entities.KiiObject;
 
 import org.json.JSONObject;
 

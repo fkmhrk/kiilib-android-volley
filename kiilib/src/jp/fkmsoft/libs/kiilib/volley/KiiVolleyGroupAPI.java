@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiGroup;
-import jp.fkmsoft.libs.kiilib.GroupAPI;
-import jp.fkmsoft.libs.kiilib.KiiUser;
+import jp.fkmsoft.libs.kiilib.apis.GroupAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.entities.KiiGroup;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

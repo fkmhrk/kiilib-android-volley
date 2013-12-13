@@ -1,4 +1,7 @@
-package jp.fkmsoft.libs.kiilib;
+package jp.fkmsoft.libs.kiilib.apis;
+
+import jp.fkmsoft.libs.kiilib.entities.KiiBucket;
+import jp.fkmsoft.libs.kiilib.entities.QueryCondition;
 
 /**
  * Provides bucket API. To get this instance, Please call {@link AppAPI#bucketAPI()}

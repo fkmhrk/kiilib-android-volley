@@ -3,10 +3,10 @@ package jp.fkmsoft.libs.kiilib.volley;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.fkmsoft.libs.kiilib.KiiBucket;
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiObject;
-import jp.fkmsoft.libs.kiilib.ObjectAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.apis.ObjectAPI;
+import jp.fkmsoft.libs.kiilib.entities.KiiBucket;
+import jp.fkmsoft.libs.kiilib.entities.KiiObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;

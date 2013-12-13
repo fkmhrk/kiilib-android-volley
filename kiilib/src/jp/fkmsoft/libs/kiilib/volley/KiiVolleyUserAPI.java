@@ -1,8 +1,8 @@
 package jp.fkmsoft.libs.kiilib.volley;
 
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiUser;
-import jp.fkmsoft.libs.kiilib.UserAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.apis.UserAPI;
+import jp.fkmsoft.libs.kiilib.entities.KiiUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;

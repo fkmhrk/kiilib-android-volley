@@ -1,10 +1,10 @@
 package jp.fkmsoft.libs.kiilib.volley;
 
-import jp.fkmsoft.libs.kiilib.KiiBucket;
-import jp.fkmsoft.libs.kiilib.BucketAPI;
-import jp.fkmsoft.libs.kiilib.KiiCallback;
-import jp.fkmsoft.libs.kiilib.KiiObject;
-import jp.fkmsoft.libs.kiilib.QueryCondition;
+import jp.fkmsoft.libs.kiilib.apis.BucketAPI;
+import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
+import jp.fkmsoft.libs.kiilib.entities.KiiBucket;
+import jp.fkmsoft.libs.kiilib.entities.KiiObject;
+import jp.fkmsoft.libs.kiilib.entities.QueryCondition;
 
 import org.json.JSONArray;
 import org.json.JSONException;
