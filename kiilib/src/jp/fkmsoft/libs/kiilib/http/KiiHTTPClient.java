@@ -1,0 +1,33 @@
+package jp.fkmsoft.libs.kiilib.http;
+
+import java.util.Map;
+
+import org.json.JSONObject;
+
+/**
+ * HTTP client
+ */
+public interface KiiHTTPClient {
+    public interface Method {
+        public static final int GET = 1;
+        public static final int POST = 2;
+        public static final int PUT = 3;
+        public static final int DELETE = 4;
+    }
+    
+    public interface ResponseHandler {
+        void onResponse(int status, JSONObject response);
+        
+        void onException(Exception e);
+    }
+    
+    /**
+     * Sends JSONObject request
+     * @param method HTTP method
+     * @param url target URL
+     * @param headers HTTP header
+     * @param body request body. If method is GET/DELETE, must be null
+     * @param handler response handler
+     */
+    void sendJsonRequest(int method, String url, Map<String, String> headers, JSONObject body, ResponseHandler handler);
+}
