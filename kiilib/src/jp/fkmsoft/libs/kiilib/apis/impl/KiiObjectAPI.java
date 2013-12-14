@@ -1,6 +1,7 @@
 package jp.fkmsoft.libs.kiilib.apis.impl;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
@@ -81,7 +82,7 @@ class KiiObjectAPI implements ObjectAPI {
     }
 
     @Override
-    public void updatePatch(final KiiObject obj, JSONObject patch, final ObjectCallback callback) {
+    public void updatePatch(final KiiObject obj, final JSONObject patch, final ObjectCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath();
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("X-HTTP-Method-Override", "PATCH");
@@ -90,6 +91,17 @@ class KiiObjectAPI implements ObjectAPI {
                 "application/json", headers, patch, new KiiResponseHandler<ObjectCallback>(callback) {
             @Override
             protected void onSuccess(JSONObject response, String etag, ObjectCallback callback) {
+                // copy to obj
+                @SuppressWarnings("unchecked")
+                Iterator<String> keys = patch.keys();
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    try {
+                        obj.put(key, patch.opt(key));
+                    } catch (JSONException e) {
+                        // nop
+                    }
+                }
                 long modifiedTime = response.optLong("modifiedAt", -1);
                 if (modifiedTime != -1) {
                     obj.setModifiedTime(modifiedTime);
