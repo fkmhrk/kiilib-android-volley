@@ -17,6 +17,10 @@ public class KiiGroup implements BucketOwnable, Parcelable, AccessControllable, 
     private final KiiUser owner;
     private final List<KiiUser> members;
     
+    public KiiGroup(String id) {
+        this(id, null, null);
+    }
+    
     public KiiGroup(String id, String name, KiiUser owner) {
         this.id = id;
         this.name = name;

@@ -127,13 +127,14 @@ class KiiGroupAPI implements GroupAPI {
     }
 
     @Override
-    public void addMember(KiiGroup group, final KiiUser user, final AddCallback callback) {
+    public void addMember(final KiiGroup group, final KiiUser user, final GroupCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + group.getResourcePath() + "/members/" + user.getId();
         
-        api.getHttpClient().sendJsonRequest(Method.PUT, url, api.accessToken, "", null, null, new KiiResponseHandler<AddCallback>(callback) {
+        api.getHttpClient().sendJsonRequest(Method.PUT, url, api.accessToken, "", null, null, new KiiResponseHandler<GroupCallback>(callback) {
             @Override
-            protected void onSuccess(JSONObject response, String etag, AddCallback callback) {
-                callback.onSuccess(user);
+            protected void onSuccess(JSONObject response, String etag, GroupCallback callback) {
+                group.getMembers().add(user);
+                callback.onSuccess(group);
             }
         });
     }
