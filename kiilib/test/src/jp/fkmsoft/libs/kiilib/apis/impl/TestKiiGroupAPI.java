@@ -219,4 +219,35 @@ public class TestKiiGroupAPI extends AndroidTestCase {
             }
         });
     }
+    
+    public void test_0500_changeName() throws Exception {
+        final TestAppAPI api = new TestAppAPI(appId, appKey , baseUrl);
+        GroupAPI groupAPI = api.groupAPI();
+        
+        // set mock
+        api.client.addResponse(204, null, "'");
+        
+        KiiGroup group = new KiiGroup("group1234");
+        String name = "newGroup";
+        groupAPI.changeName(group, name, new GroupAPI.GroupCallback() {
+            
+            @Override
+            public void onError(int status, String body) {
+                fail("error status=" + status + " body=" + body);
+            }
+            
+            @Override
+            public void onSuccess(KiiGroup group) {
+                // args
+                Args args = api.client.argsQueue.poll();
+                assertEquals(Method.PUT, args.method);
+                assertEquals("https://api.kii.com/api/apps/appId/groups/group1234/name", args.url);
+                assertNull(args.body);
+                assertEquals("newGroup", args.plainBody);
+                
+                // output
+                assertEquals("newGroup", group.getName());
+            }
+        });
+    }
 }

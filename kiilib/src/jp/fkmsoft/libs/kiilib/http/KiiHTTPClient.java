@@ -32,4 +32,15 @@ public interface KiiHTTPClient {
      * @param handler response handler
      */
     void sendJsonRequest(int method, String url, String token, String contentType, Map<String, String> headers, JSONObject body, ResponseHandler handler);
+    
+    /**
+     * Sends text/plain request
+     * @param method HTTP method
+     * @param url target URL
+     * @param token access token
+     * @param headers HTTP header
+     * @param body request body. If method is GET/DELETE, must be null
+     * @param handler response handler
+     */
+    void sendPlainTextRequest(int method, String url, String token, Map<String, String> headers, String body, ResponseHandler handler);
 }

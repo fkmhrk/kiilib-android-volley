@@ -27,6 +27,19 @@ public class MockHTTPClient implements KiiHTTPClient {
         }
     }
     
+    @Override
+    public void sendPlainTextRequest(int method, String url, String token,
+            Map<String, String> headers, String body, ResponseHandler handler) {
+        argsQueue.add(new Args(method, url, token, headers, body));
+        
+        Response response = responseQueue.poll();
+        if (response.exception == null) {
+            handler.onResponse(response.status, response.body, response.etag);
+        } else {
+            handler.onException(response.exception);
+        }
+    }
+    
     public void addResponse(int status, JSONObject body, String etag) {
         responseQueue.add(new Response(status, body, etag));
     }
@@ -42,15 +55,24 @@ public class MockHTTPClient implements KiiHTTPClient {
         public String contentType;
         public Map<String, String> headers;
         public JSONObject body;
+        public String plainBody;
+        
         Args(int method, String url, String token, String contentType,
                 Map<String, String> headers, JSONObject body) {
-            super();
             this.method = method;
             this.url = url;
             this.token = token;
             this.contentType = contentType;
             this.headers = headers;
             this.body = body;
+        }
+        
+        Args(int method, String url, String token, Map<String, String> headers, String body) {
+            this.method = method;
+            this.url = url;
+            this.token = token;
+            this.headers = headers;
+            this.plainBody = body;
         }
     }
     

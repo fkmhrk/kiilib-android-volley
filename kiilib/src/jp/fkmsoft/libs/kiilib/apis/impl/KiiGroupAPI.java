@@ -143,7 +143,8 @@ class KiiGroupAPI implements GroupAPI {
     public void changeName(final KiiGroup group, final String name, final GroupCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + group.getResourcePath() + "/name";
         
-        api.getHttpClient().sendJsonRequest(Method.PUT, url, api.accessToken, null, null, null, new KiiResponseHandler<GroupCallback>(callback) {
+        api.getHttpClient().sendPlainTextRequest(Method.PUT, url, api.accessToken, 
+                null, name, new KiiResponseHandler<GroupCallback>(callback) {
             @Override
             protected void onSuccess(JSONObject response, String etag, GroupCallback callback) {
                 callback.onSuccess(new KiiGroup(group.getId(), name, group.getOwner()));
