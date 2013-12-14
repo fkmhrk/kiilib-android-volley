@@ -31,7 +31,7 @@ class KiiTopicAPI implements TopicAPI {
         api.getHttpClient().sendJsonRequest(Method.PUT, url, api.accessToken, null, null, null, new KiiResponseHandler<TopicCallback>(callback) {
             @Override
             protected void onSuccess(JSONObject response, String etag, TopicCallback callback) {
-                callback.onSuccess(null);
+                callback.onSuccess(new KiiTopic(owner, name));
             }
         });
     }
