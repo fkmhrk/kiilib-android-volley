@@ -16,7 +16,7 @@ public interface KiiHTTPClient {
     }
     
     public interface ResponseHandler {
-        void onResponse(int status, JSONObject response);
+        void onResponse(int status, JSONObject response, String etag);
         
         void onException(Exception e);
     }
@@ -25,9 +25,11 @@ public interface KiiHTTPClient {
      * Sends JSONObject request
      * @param method HTTP method
      * @param url target URL
+     * @param token access token
+     * @param contentType contentType. If method is GET/DELETE, must be null
      * @param headers HTTP header
      * @param body request body. If method is GET/DELETE, must be null
      * @param handler response handler
      */
-    void sendJsonRequest(int method, String url, Map<String, String> headers, JSONObject body, ResponseHandler handler);
+    void sendJsonRequest(int method, String url, String token, String contentType, Map<String, String> headers, JSONObject body, ResponseHandler handler);
 }

@@ -13,7 +13,7 @@ public interface ObjectAPI {
     
     void getById(KiiBucket bucket, String id, ObjectCallback callback);
     
-    void create(KiiObject obj, ObjectCallback callback);
+    void create(KiiBucket bucket, JSONObject obj, ObjectCallback callback);
     
     void update(KiiObject obj, ObjectCallback callback);
     

@@ -22,14 +22,17 @@ class VolleyHTTPClient implements KiiHTTPClient {
     }
     
     @Override
-    public void sendJsonRequest(int method, String url,
+    public void sendJsonRequest(int method, String url, String token, 
+            String contentType, 
             Map<String, String> headers, JSONObject body,
             final ResponseHandler handler) {
-        KiiRequest request = new KiiRequest(Method.POST, url,
-                api.appId, api.appKey, body, new Listener<KiiResponse>() {
+        int volleyMethod = toVolleyMethod(method);
+        
+        KiiRequest request = new KiiRequest(volleyMethod, url,
+                api.appId, api.appKey, token, contentType, headers, body, new Listener<KiiResponse>() {
             @Override
             public void onResponse(KiiResponse result) {
-                handler.onResponse(200, result);
+                handler.onResponse(200, result, result.getEtag());
             }
         }, new ErrorListener() {
             @Override
@@ -43,7 +46,7 @@ class VolleyHTTPClient implements KiiHTTPClient {
                 try {
                     String body = new String(networkResponse.data, "UTF-8");
                     JSONObject json = new JSONObject(body);
-                    handler.onResponse(networkResponse.statusCode, json);
+                    handler.onResponse(networkResponse.statusCode, json, networkResponse.headers.get("ETag"));
                 } catch (JSONException e) {
                     handler.onException(error);
                 } catch (UnsupportedEncodingException e) {
@@ -53,6 +56,16 @@ class VolleyHTTPClient implements KiiHTTPClient {
         });
         
         api.queue.add(request);
+    }
+
+    private int toVolleyMethod(int method) {
+        switch (method) {
+        case Method.GET: return com.android.volley.Request.Method.GET;
+        case Method.POST: return com.android.volley.Request.Method.POST;
+        case Method.PUT: return com.android.volley.Request.Method.PUT;
+        case Method.DELETE: return com.android.volley.Request.Method.DELETE;
+        default: return com.android.volley.Request.Method.GET;
+        }
     }
 
 }
