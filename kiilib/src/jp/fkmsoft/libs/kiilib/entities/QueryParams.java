@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * @author fkm
  *
  */
-public class QueryCondition {
+public class QueryParams {
     
     private static final String FIELD_BUCKET_QUERY = "bucketQuery";
     
@@ -21,7 +21,7 @@ public class QueryCondition {
     private JSONObject json = new JSONObject();
     private JSONObject queryJson = new JSONObject();
     
-    public QueryCondition(KiiClause clause) {
+    public QueryParams(KiiClause clause) {
         try {
             queryJson.put(FIELD_CLAUSE, clause.toJson());
         } catch (JSONException e) {

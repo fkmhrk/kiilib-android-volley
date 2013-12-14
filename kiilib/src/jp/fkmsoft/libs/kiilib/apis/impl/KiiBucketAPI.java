@@ -4,7 +4,7 @@ import jp.fkmsoft.libs.kiilib.apis.BucketAPI;
 import jp.fkmsoft.libs.kiilib.apis.KiiCallback;
 import jp.fkmsoft.libs.kiilib.entities.KiiBucket;
 import jp.fkmsoft.libs.kiilib.entities.KiiObject;
-import jp.fkmsoft.libs.kiilib.entities.QueryCondition;
+import jp.fkmsoft.libs.kiilib.entities.QueryParams;
 import jp.fkmsoft.libs.kiilib.http.KiiHTTPClient.Method;
 
 import org.json.JSONArray;
@@ -20,7 +20,7 @@ class KiiBucketAPI implements BucketAPI {
     }
 
     @Override
-    public void query(final KiiBucket bucket, QueryCondition condition, final QueryCallback callback) {
+    public void query(final KiiBucket bucket, QueryParams condition, final QueryCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + bucket.getResourcePath() + "/query";
         
         api.getHttpClient().sendJsonRequest(Method.POST, url, api.accessToken, 
