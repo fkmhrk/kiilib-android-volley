@@ -34,7 +34,7 @@ public interface GroupAPI {
         void onSuccess(KiiUser user);
     }
     
-    void addMember(KiiGroup group, KiiUser user, AddCallback callback);
+    void addMember(KiiGroup group, KiiUser user, GroupCallback callback);
     
     void changeName(KiiGroup group, String name, GroupCallback callback);
 }

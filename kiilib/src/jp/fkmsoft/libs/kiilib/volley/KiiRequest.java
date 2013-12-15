@@ -52,6 +52,46 @@ public class KiiRequest extends JsonRequest<KiiResponse> {
         }
         headers.put("content-type", contentType);
     }
+    public KiiRequest(int method,
+            String url,
+            String appId, 
+            String appKey,
+            String accessToken,
+            String contentType,
+            Map<String, String> headers,
+            JSONObject jsonRequest,
+            Listener<KiiResponse> listener,
+            ErrorListener errorListener) {
+        this(method, url, appId, appKey, accessToken, contentType, headers, (jsonRequest == null) ? null : jsonRequest.toString(), listener, errorListener);
+    }
+    
+    public KiiRequest(int method,
+            String url,
+            String appId, 
+            String appKey,
+            String accessToken,
+            String contentType,
+            Map<String, String> headers,
+            String body,
+            Listener<KiiResponse> listener,
+            ErrorListener errorListener) {
+        super(method, url, body, listener, errorListener);
+        setRetryPolicy(new KiiRetryPolicy());
+        
+        this.headers.put("x-kii-appid", appId);
+        this.headers.put("x-kii-appkey", appKey);
+        if (accessToken != null) {
+            this.headers.put("authorization", "bearer " + accessToken);
+        }
+        
+        if (headers != null) {
+            this.headers.putAll(headers);
+        }
+        
+        if (contentType != null) {
+            this.headers.put("content-type", contentType);
+        }
+    }    
     
     public KiiRequest(int method,
             String url,

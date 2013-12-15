@@ -99,6 +99,10 @@ public class KiiObject extends JSONObject implements AccessControllable, Parcela
         return optLong(FIELD_CREATED, 0);
     }
     
+    public long getModifiedTime() {
+        return optLong(FIELD_MODIFIED, 0);
+    }
+    
     @Override
     public int describeContents() {
         return 0;
