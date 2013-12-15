@@ -77,9 +77,19 @@ public class KiiRequest extends JsonRequest<KiiResponse> {
             ErrorListener errorListener) {
         super(method, url, body, listener, errorListener);
         setRetryPolicy(new KiiRetryPolicy());
-        this.headers.putAll(headers);
+        
+        this.headers.put("x-kii-appid", appId);
+        this.headers.put("x-kii-appkey", appKey);
+        if (accessToken != null) {
+            this.headers.put("authorization", "bearer " + accessToken);
+        }
+        
+        if (headers != null) {
+            this.headers.putAll(headers);
+        }
+        
         if (contentType != null) {
-            headers.put("content-type", contentType);
+            this.headers.put("content-type", contentType);
         }
     }    
     
