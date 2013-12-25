@@ -1,5 +1,6 @@
 package jp.fkmsoft.libs.kiilib.entities;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,6 +25,38 @@ public class KiiClause implements Parcelable {
         return clause;
     }
     
+    public static KiiClause and(KiiClause... clauses) {
+        KiiClause clause = new KiiClause(TYPE_AND);
+        
+        try {
+            clause.json.put(FIELD_CLAUSES, toClauseArray(clauses));
+        } catch (JSONException e) {
+            // nop
+        }
+        
+        return clause;
+    }
+    
+    public static KiiClause or(KiiClause... clauses) {
+        KiiClause clause = new KiiClause(TYPE_OR);
+        
+        try {
+            clause.json.put(FIELD_CLAUSES, toClauseArray(clauses));
+        } catch (JSONException e) {
+            // nop
+        }
+        
+        return clause;
+    }    
+    
+    private static JSONArray toClauseArray(KiiClause[] clauses) {
+        JSONArray array = new JSONArray();
+        for (KiiClause item : clauses) {
+            array.put(item.toJson());
+        }
+        return array;
+    }
+    
     public JSONObject toJson() {
         return json;
     }
@@ -31,9 +64,14 @@ public class KiiClause implements Parcelable {
     private static final String FIELD_TYPE = "type";
     private static final String FIELD_FIELD = "field";
     private static final String FIELD_VALUE = "value";
+    private static final String FIELD_CLAUSES = "clauses";
     
     private static final String TYPE_ALL = "all";
     private static final String TYPE_EQUAL = "eq";
+    private static final String TYPE_AND = "and";
+    private static final String TYPE_OR = "or";
+
+    
     
     private JSONObject json = new JSONObject();
     
