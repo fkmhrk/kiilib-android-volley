@@ -21,4 +21,6 @@ public interface UserAPI {
     void updateEmail(KiiUser user, String newEmail, boolean verified, UserCallback callback);
     
     void updatePhone(KiiUser user, String newPhone, boolean verified, UserCallback callback);
+    
+    void installDevice(KiiUser user, String regId, UserCallback callback);
 }
