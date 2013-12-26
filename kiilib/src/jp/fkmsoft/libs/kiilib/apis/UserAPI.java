@@ -22,5 +22,5 @@ public interface UserAPI {
     
     void updatePhone(KiiUser user, String newPhone, boolean verified, UserCallback callback);
     
-    void installDevice(KiiUser user, String regId, UserCallback callback);
+    void installDevice(String regId, UserCallback callback);
 }
