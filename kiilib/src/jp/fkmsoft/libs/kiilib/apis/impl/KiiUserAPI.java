@@ -123,12 +123,11 @@ class KiiUserAPI implements UserAPI {
     }
 
     @Override
-    public void installDevice(final KiiUser user, String regId, final UserCallback callback) {
+    public void installDevice(String regId, final UserCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + "/installations";
         JSONObject json = new JSONObject();
         try {
             json.put("installationRegistrationID", regId);
-            json.put("userID", user.getId());
             json.put("deviceType", "ANDROID");
         } catch (JSONException e) {
             callback.onError(KiiCallback.STATUS_JSON_EXCEPTION, e.getMessage());
@@ -147,7 +146,7 @@ class KiiUserAPI implements UserAPI {
             }
             
             private void success(JSONObject response) {
-                callback.onSuccess(user);
+                callback.onSuccess(null);
             }
 
             @Override
