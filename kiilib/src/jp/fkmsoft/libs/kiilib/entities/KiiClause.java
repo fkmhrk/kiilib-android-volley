@@ -13,7 +13,7 @@ public class KiiClause implements Parcelable {
         return new KiiClause(TYPE_ALL);
     }
     
-    public static KiiClause equals(String field, String value) {
+    public static <T> KiiClause equals(String field, T value) {
         KiiClause clause = new KiiClause(TYPE_EQUAL);
         try {
             clause.json.put(FIELD_FIELD, field);
@@ -25,7 +25,7 @@ public class KiiClause implements Parcelable {
         return clause;
     }
     
-    public static KiiClause greaterThan(String field, String value, boolean included) {
+    public static <T> KiiClause greaterThan(String field, T value, boolean included) {
         KiiClause clause = new KiiClause(TYPE_RANGE);
         try {
             clause.json.put(FIELD_FIELD, field);
@@ -38,7 +38,7 @@ public class KiiClause implements Parcelable {
         return clause;
     }
     
-    public static KiiClause lessThan(String field, String value, boolean included) {
+    public static <T> KiiClause lessThan(String field, T value, boolean included) {
         KiiClause clause = new KiiClause(TYPE_RANGE);
         try {
             clause.json.put(FIELD_FIELD, field);
