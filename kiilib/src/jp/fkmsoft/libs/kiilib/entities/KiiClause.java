@@ -25,6 +25,32 @@ public class KiiClause implements Parcelable {
         return clause;
     }
     
+    public static KiiClause greaterThan(String field, String value, boolean included) {
+        KiiClause clause = new KiiClause(TYPE_RANGE);
+        try {
+            clause.json.put(FIELD_FIELD, field);
+            clause.json.put(FIELD_LOWER_LIMIT, value);
+            clause.json.put(FIELD_LOWER_INCLUDED, included);
+        } catch (JSONException e) {
+            // nop
+        }
+        
+        return clause;
+    }
+    
+    public static KiiClause lessThan(String field, String value, boolean included) {
+        KiiClause clause = new KiiClause(TYPE_RANGE);
+        try {
+            clause.json.put(FIELD_FIELD, field);
+            clause.json.put(FIELD_UPPER_LIMIT, value);
+            clause.json.put(FIELD_UPPER_INCLUDED, included);
+        } catch (JSONException e) {
+            // nop
+        }
+        
+        return clause;
+    }    
+    
     public static KiiClause and(KiiClause... clauses) {
         KiiClause clause = new KiiClause(TYPE_AND);
         
@@ -57,22 +83,21 @@ public class KiiClause implements Parcelable {
         return array;
     }
     
-    public JSONObject toJson() {
-        return json;
-    }
-    
     private static final String FIELD_TYPE = "type";
     private static final String FIELD_FIELD = "field";
     private static final String FIELD_VALUE = "value";
+    private static final String FIELD_LOWER_LIMIT = "lowerLimit";
+    private static final String FIELD_LOWER_INCLUDED = "lowerIncluded";
+    private static final String FIELD_UPPER_LIMIT = "upperLimit";
+    private static final String FIELD_UPPER_INCLUDED = "upperIncluded";
     private static final String FIELD_CLAUSES = "clauses";
     
     private static final String TYPE_ALL = "all";
     private static final String TYPE_EQUAL = "eq";
     private static final String TYPE_AND = "and";
     private static final String TYPE_OR = "or";
+    private static final String TYPE_RANGE = "range";
 
-    
-    
     private JSONObject json = new JSONObject();
     
     private KiiClause(String type) {
@@ -90,6 +115,10 @@ public class KiiClause implements Parcelable {
         } catch (JSONException e) {
             json = new JSONObject();
         }
+    }
+    
+    public JSONObject toJson() {
+        return json;
     }
     
     @Override
