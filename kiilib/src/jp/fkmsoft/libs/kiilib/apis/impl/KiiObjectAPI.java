@@ -53,6 +53,7 @@ class KiiObjectAPI implements ObjectAPI {
                     
                     KiiObject kiiObj = new KiiObject(bucket, obj);
                     kiiObj.setCreatedTime(createdTime);
+                    kiiObj.setVersion(etag);
                     
                     callback.onSuccess(kiiObj);
                 } catch (JSONException e) {
@@ -113,6 +114,38 @@ class KiiObjectAPI implements ObjectAPI {
     }
     
     @Override
+    public void updatePatchIfUnmodified(final KiiObject obj, final JSONObject patch, ObjectCallback callback) {
+        String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath();
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("X-HTTP-Method-Override", "PATCH");
+        headers.put("If-Match", obj.getVersion());
+        
+        api.getHttpClient().sendJsonRequest(Method.POST, url, api.accessToken,
+                "application/json", headers, patch, new KiiResponseHandler<ObjectCallback>(callback) {
+            @Override
+            protected void onSuccess(JSONObject response, String etag, ObjectCallback callback) {
+                // copy to obj
+                @SuppressWarnings("unchecked")
+                Iterator<String> keys = patch.keys();
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    try {
+                        obj.put(key, patch.opt(key));
+                    } catch (JSONException e) {
+                        // nop
+                    }
+                }
+                long modifiedTime = response.optLong("modifiedAt", -1);
+                if (modifiedTime != -1) {
+                    obj.setModifiedTime(modifiedTime);
+                }
+                obj.setVersion(etag);
+                callback.onSuccess(obj);
+            }
+        });
+    }
+    
+    @Override
     public void delete(final KiiObject obj, final ObjectCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath();
         
@@ -124,4 +157,5 @@ class KiiObjectAPI implements ObjectAPI {
             }
         });
     }
+
 }

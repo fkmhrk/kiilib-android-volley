@@ -19,5 +19,7 @@ public interface ObjectAPI {
     
     void updatePatch(KiiObject obj, JSONObject patch, ObjectCallback callback);
     
+    void updatePatchIfUnmodified(KiiObject obj, JSONObject patch, ObjectCallback callback);
+    
     void delete(KiiObject obj, ObjectCallback callback);
 }
