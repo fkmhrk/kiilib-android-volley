@@ -1,5 +1,6 @@
 package jp.fkmsoft.libs.kiilib.apis.impl;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -135,6 +136,24 @@ class KiiObjectAPI implements ObjectAPI {
                         // nop
                     }
                 }
+                long modifiedTime = response.optLong("modifiedAt", -1);
+                if (modifiedTime != -1) {
+                    obj.setModifiedTime(modifiedTime);
+                }
+                obj.setVersion(etag);
+                callback.onSuccess(obj);
+            }
+        });
+    }
+    
+    @Override
+    public void updateBody(final KiiObject obj, InputStream source, String contentType, ObjectCallback callback) {
+        String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath() + "/body";
+        
+        api.getHttpClient().sendStreamRequest(Method.PUT, url, api.accessToken,
+                contentType, null, source, new KiiResponseHandler<ObjectCallback>(callback) {
+            @Override
+            protected void onSuccess(JSONObject response, String etag, ObjectCallback callback) {
                 long modifiedTime = response.optLong("modifiedAt", -1);
                 if (modifiedTime != -1) {
                     obj.setModifiedTime(modifiedTime);
