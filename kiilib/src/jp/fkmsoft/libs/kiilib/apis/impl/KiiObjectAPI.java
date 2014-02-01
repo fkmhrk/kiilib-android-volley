@@ -165,6 +165,21 @@ class KiiObjectAPI implements ObjectAPI {
     }
     
     @Override
+    public void publish(KiiObject obj, PublishCallback callback) {
+
+        String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath() + "/body/publish";
+        
+        api.getHttpClient().sendJsonRequest(Method.POST, url, api.accessToken,
+                "application/vnd.kii.ObjectBodyPublicationRequest+json", null, obj, new KiiResponseHandler<PublishCallback>(callback) {
+            @Override
+            protected void onSuccess(JSONObject response, String etag, PublishCallback callback) {
+                String url = response.optString("url", null);
+                callback.onSuccess(url);
+            }
+        });        
+    }
+    
+    @Override
     public void delete(final KiiObject obj, final ObjectCallback callback) {
         String url = api.baseUrl + "/apps/" + api.appId + obj.getResourcePath();
         

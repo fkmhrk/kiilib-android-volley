@@ -13,6 +13,10 @@ public interface ObjectAPI {
         void onSuccess(KiiObject obj);
     };
     
+    public interface PublishCallback extends KiiCallback {
+        void onSuccess(String url);
+    };
+    
     void getById(KiiBucket bucket, String id, ObjectCallback callback);
     
     void create(KiiBucket bucket, JSONObject obj, ObjectCallback callback);
@@ -24,6 +28,8 @@ public interface ObjectAPI {
     void updatePatchIfUnmodified(KiiObject obj, JSONObject patch, ObjectCallback callback);
     
     void updateBody(KiiObject obj, InputStream source, String contentType, ObjectCallback callback);
+    
+    void publish(KiiObject obj, PublishCallback callback);
     
     void delete(KiiObject obj, ObjectCallback callback);
 }
