@@ -79,6 +79,14 @@ public class KiiTopicMessage {
         this.sendTopicID = value;
         return this;
     }
+    
+    public GCM getGCMFields() {
+        return gcm;
+    }
+    
+    public APNs getAPNsFields() {
+        return apns;
+    }
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -103,11 +111,20 @@ public class KiiTopicMessage {
     
     public static class GCM {
         private static final String FIELD_ENABLED = "enabled";
+        private static final String FIELD_DATA = "data";
+        
         private boolean enabled = true;
+        private JSONObject data = new JSONObject();
+        
+        public JSONObject getData() {
+            return data;
+        }
+        
         public JSONObject toJson() {
             JSONObject json = new JSONObject();
             try {
                 json.put(FIELD_ENABLED, enabled);
+                json.put(FIELD_DATA, data);
             } catch (JSONException e) {
                 // nop
             }
@@ -117,15 +134,68 @@ public class KiiTopicMessage {
     
     public static class APNs {
         private static final String FIELD_ENABLED = "enabled";
+        private static final String FIELD_DATA = "data";
+        private static final String FIELD_ALERT = "alert";
+        private static final String FIELD_SOUND = "sound";
+        private static final String FIELD_BADGE = "badge";
+        
         private boolean enabled = true;
+        private JSONObject data = new JSONObject();
+        private Alert alert = new Alert();
+        private String sound;
+        private int badge;
+        
+        public JSONObject getData() {
+            return data;
+        }
+        
+        public Alert getAlert() {
+            return alert;
+        }
+        
+        public APNs setSound(String value) {
+            this.sound = value;
+            return this;
+        }
+        
+        public APNs setBadge(int value) {
+            this.badge = value;
+            return this;
+        }
+        
         public JSONObject toJson() {
             JSONObject json = new JSONObject();
             try {
                 json.put(FIELD_ENABLED, enabled);
+                json.put(FIELD_DATA, data);
+                json.put(FIELD_ALERT, alert.toJson());
+                json.put(FIELD_SOUND, sound);
+                json.put(FIELD_BADGE, badge);
             } catch (JSONException e) {
                 // nop
             }
             return json;
+        }
+        
+        public static class Alert {
+            private static final String FIELD_BODY = "body";
+            
+            private String body;
+            
+            public Alert setBody(String value) {
+                this.body = value;
+                return this;
+            }
+            
+            public JSONObject toJson() {
+                JSONObject json = new JSONObject();
+                try {
+                    json.put(FIELD_BODY, body);
+                } catch (JSONException e) {
+                    // nop
+                }
+                return json;
+            }
         }
     }
     
