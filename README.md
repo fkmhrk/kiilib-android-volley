@@ -7,14 +7,22 @@ This is the library for Kii Cloud Android with volley implementation. This libra
 
 So please install them on your local maven repository
 
-Preparation
+How to install on your local maven repository
 ==========
 install gradle 1.10 to build volley. 
+----
+go to http://www.gradle.org/
+
+download gradle-1.10-bin.zip and unzip
+
+add bin to PATH
 
 install volley on your local maven repository
 ----
-* clone volley from here https://android.googlesource.com/platform/frameworks/volley/
-* add the following section to build.gradle in volley
+clone volley from here https://android.googlesource.com/platform/frameworks/volley/
+
+add the following section to build.gradle in volley
+
     apply plugin: 'maven'
     uploadArchives {
         repositories.mavenDeployer {
@@ -25,17 +33,16 @@ install volley on your local maven repository
         }
     } 
 
-* execute the following command
+execute the following command
 
     $ gradle clean uploadArchives
-    
 
 install KiiLib-Java on your local maven repository
 ----
 Please see https://github.com/fkmhrk/KiiLib-Java/
 
-How to install on your local maven repository
-============
+install this library on your local maven repository
+----
     $ sh gradlew uploadArchives
     Relying on packaging to define the extension of the main artifact has been deprecated and is scheduled to be removed in Gradle 2.0
     :kiilib:compileLint
