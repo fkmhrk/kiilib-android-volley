@@ -26,7 +26,6 @@ android {
             aidl.srcDirs         = ['src']
             resources.srcDirs    = ['src']
             renderscript.srcDirs = ['src']
-            java.srcDirs         = ['src']
             manifest.srcFile 'AndroidManifest.xml'
 
         }
