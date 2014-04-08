@@ -1,1 +1,1 @@
-include ':kiilib', ':volley'
+include ':kiilib'
