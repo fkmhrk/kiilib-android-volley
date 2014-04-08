@@ -19,13 +19,6 @@ android {
     buildToolsVersion "19.0.3"
 
     sourceSets {
-
-        main {
-            assets.srcDirs       = ['assets']
-            res.srcDirs          = ['res']
-            resources.srcDirs    = ['src']
-            renderscript.srcDirs = ['src']
-        }
         instrumentTest {
             assets.srcDirs    = ["test/assets"]
             res.srcDirs       = ["test/res"]
