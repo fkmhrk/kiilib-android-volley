@@ -3,7 +3,7 @@ package jp.fkmsoft.libs.kiilib.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-class KiiApp implements BucketOwnable {
+class KiiApp implements BucketOwnable, Parcelable {
 
     KiiApp() {
     }

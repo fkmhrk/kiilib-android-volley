@@ -8,46 +8,34 @@ import android.os.Parcelable;
  * @author fkm
  *
  */
-public class KiiTopic implements Parcelable, AccessControllable {
+public class KiiTopic extends KiiBaseTopic implements Parcelable {
 
-    private final BucketOwnable owner;
-    private final String name;
-    
     private static BucketOwnable APP_SCOPE = new KiiApp();
     
     public KiiTopic(BucketOwnable owner, String name) {
-        if (owner == null) {
-            owner = APP_SCOPE;
-        }
-        this.owner = owner;
-        this.name = name;
+        super(owner, name);
     }
     
-    private KiiTopic(Parcel in) {
+    static KiiTopic fromParcel(Parcel in) {
         int ownerType = in.readInt();
+        BucketOwnable owner;
         switch (ownerType) {
         case BucketOwnable.TYPE_APP:
-            this.owner = APP_SCOPE;
+            owner = APP_SCOPE;
             break;
         case BucketOwnable.TYPE_USER:
-            this.owner = KiiUser.fromParcel(in);
+            owner = KiiUser.fromParcel(in);
             break;
         case BucketOwnable.TYPE_GROUP:
-            this.owner = KiiGroup.fromParcel(in);
+            owner = KiiGroup.fromParcel(in);
             break;
         default:
-            this.owner = APP_SCOPE;
+            owner = APP_SCOPE;
             break;
         }
-        this.name = in.readString();
-    }
-    
-    public String getResourcePath() {
-        return owner.getResourcePath() + "/topics/" + name;
-    }
 
-    public String getName() {
-        return name;
+        String name = in.readString();
+        return new KiiTopic(owner, name);
     }
     
     @Override
@@ -57,16 +45,26 @@ public class KiiTopic implements Parcelable, AccessControllable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(owner.getType());
-        owner.writeToParcel(dest, flags);
-        dest.writeString(name);
+        BucketOwnable owner = getOwner();
+        if (owner instanceof KiiApp) {
+            dest.writeInt(BucketOwnable.TYPE_APP);
+        } else if (owner instanceof KiiGroup) {
+            dest.writeInt(BucketOwnable.TYPE_GROUP);
+            KiiGroup group = (KiiGroup) owner;
+            group.writeToParcel(dest, flags);
+        } else if (owner instanceof KiiUser) {
+            dest.writeInt(BucketOwnable.TYPE_USER);
+            KiiUser user = (KiiUser) owner;
+            user.writeToParcel(dest, flags);
+        }
+        dest.writeString(getName());
     }
     
     public static final Parcelable.Creator<KiiTopic> CREATOR = new Parcelable.Creator<KiiTopic>() {
 
         @Override
         public KiiTopic createFromParcel(Parcel source) {
-            return new KiiTopic(source);
+            return KiiTopic.fromParcel(source);
         }
 
         @Override
