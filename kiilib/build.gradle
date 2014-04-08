@@ -9,11 +9,21 @@ buildscript {
 }
 
 apply plugin: 'android-library'
+apply plugin: 'maven'
 
 repositories {
     mavenLocal()
 }
  
+uploadArchives {
+    repositories.mavenDeployer {
+        repository url: "file://$System.env.HOME/.m2/repository"
+        pom.version = '2.0.0'
+        pom.groupId = 'jp.fkmsoft.libs'
+        pom.artifactId = 'KiiLib-Android-Volley'
+    }
+}
+
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.3"
@@ -32,3 +42,5 @@ dependencies {
     compile 'com.google:volley:+'
     compile 'jp.fkmsoft.libs:KiiLib-Java:2.+'
 }
+
+
