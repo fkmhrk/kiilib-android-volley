@@ -1,8 +1,5 @@
 package jp.fkmsoft.libs.kiilib.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -11,21 +8,14 @@ import android.os.Parcelable;
  * @author fkm
  *
  */
-public class KiiGroup implements BucketOwnable, Parcelable, AccessControllable, ACLSubject {
-    private final String id;
-    private final String name;
-    private final KiiUser owner;
-    private final List<KiiUser> members;
-    
+public class KiiGroup extends KiiBaseGroup<KiiUser> implements Parcelable {
+
     public KiiGroup(String id) {
         this(id, null, null);
     }
     
     public KiiGroup(String id, String name, KiiUser owner) {
-        this.id = id;
-        this.name = name;
-        this.owner = owner;
-        this.members = new ArrayList<KiiUser>();
+        super(id, name, owner);
     }
 
     public static KiiGroup fromParcel(Parcel source) {
@@ -34,32 +24,6 @@ public class KiiGroup implements BucketOwnable, Parcelable, AccessControllable, 
         KiiUser owner = KiiUser.fromParcel(source);
 
         return new KiiGroup(id, name, owner);
-    }
-    
-    public String getId() {
-        return id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public KiiUser getOwner() {
-        return owner;
-    }
-    
-    public List<KiiUser> getMembers() {
-        return members;
-    }
-    
-    @Override
-    public String getResourcePath() {
-        return "/groups/" + id;
-    }
-
-    @Override
-    public int getType() {
-        return BucketOwnable.TYPE_GROUP;
     }
     
     public static final Parcelable.Creator<KiiGroup> CREATOR = new Parcelable.Creator<KiiGroup>() {
@@ -82,13 +46,8 @@ public class KiiGroup implements BucketOwnable, Parcelable, AccessControllable, 
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(name);
-        owner.writeToParcel(dest, flags);
-    }
-
-    @Override
-    public String getSubjectType() {
-        return "GroupID";
+        dest.writeString(getId());
+        dest.writeString(getName());
+        getOwner().writeToParcel(dest, flags);
     }
 }
