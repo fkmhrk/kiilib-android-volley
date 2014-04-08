@@ -41,4 +41,5 @@ android {
 
 dependencies {
     compile 'com.google:volley:+'
+    compile 'jp.fkmsoft.libs:KiiLib-Java:2.+'
 }
