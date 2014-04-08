@@ -1,5 +1,6 @@
 package jp.fkmsoft.libs.kiilib.mock;
 
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -38,6 +39,12 @@ public class MockHTTPClient implements KiiHTTPClient {
         } else {
             handler.onException(response.exception);
         }
+    }
+    
+    @Override
+    public void sendStreamRequest(int method, String url, String token, String contentType, 
+            Map<String, String> headers, InputStream body,
+            ResponseHandler handler) {
     }
     
     public void addResponse(int status, JSONObject body, String etag) {

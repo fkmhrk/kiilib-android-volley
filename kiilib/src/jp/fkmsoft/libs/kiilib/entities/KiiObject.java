@@ -83,6 +83,10 @@ public class KiiObject extends JSONObject implements AccessControllable, Parcela
         version = etag;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
     public void setModifiedTime(long value) {
         try {
             put(FIELD_MODIFIED, value);

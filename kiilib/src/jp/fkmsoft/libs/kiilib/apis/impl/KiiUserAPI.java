@@ -121,4 +121,38 @@ class KiiUserAPI implements UserAPI {
             }
         });
     }
+
+    @Override
+    public void installDevice(String regId, final UserCallback callback) {
+        String url = api.baseUrl + "/apps/" + api.appId + "/installations";
+        JSONObject json = new JSONObject();
+        try {
+            json.put("installationRegistrationID", regId);
+            json.put("deviceType", "ANDROID");
+        } catch (JSONException e) {
+            callback.onError(KiiCallback.STATUS_JSON_EXCEPTION, e.getMessage());
+            return;
+        }
+        
+        api.getHttpClient().sendJsonRequest(Method.POST, url, api.accessToken, 
+                "application/vnd.kii.InstallationCreationRequest+json", null, json, new ResponseHandler() {
+            @Override
+            public void onResponse(int status, JSONObject response, String etag) {
+                if (status < 300) {
+                    success(response);
+                } else {
+                    callback.onError(status, response.toString());
+                }
+            }
+            
+            private void success(JSONObject response) {
+                callback.onSuccess(null);
+            }
+
+            @Override
+            public void onException(Exception e) {
+                callback.onError(KiiCallback.STATUS_GENERAL_EXCEPTION, e.getMessage());
+            }
+        });
+    }
 }

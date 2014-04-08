@@ -17,6 +17,7 @@ public class QueryParams {
     private static final String FIELD_DESCENDING = "descending";
     
     private static final String FIELD_PAGINATION_KEY = "paginationKey";
+    private static final String FIELD_BESTEFFORT_LIMIT = "bestEffortLimit";
     
     private JSONObject json = new JSONObject();
     private JSONObject queryJson = new JSONObject();
@@ -49,6 +50,14 @@ public class QueryParams {
     public void setPaginationKey(String key) {
         try {
             json.put(FIELD_PAGINATION_KEY, key);
+        } catch (JSONException e) {
+            // nop
+        }
+    }
+    
+    public void setLimit(int limit) {
+        try {
+            json.put(FIELD_BESTEFFORT_LIMIT, limit);
         } catch (JSONException e) {
             // nop
         }

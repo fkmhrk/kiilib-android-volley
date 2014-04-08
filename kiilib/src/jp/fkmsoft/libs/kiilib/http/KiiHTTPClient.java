@@ -1,5 +1,6 @@
 package jp.fkmsoft.libs.kiilib.http;
 
+import java.io.InputStream;
 import java.util.Map;
 
 import org.json.JSONObject;
@@ -43,4 +44,16 @@ public interface KiiHTTPClient {
      * @param handler response handler
      */
     void sendPlainTextRequest(int method, String url, String token, Map<String, String> headers, String body, ResponseHandler handler);
+    
+    /**
+     * Sends stream request
+     * @param method HTTP method
+     * @param url target URL
+     * @param token access token
+     * @param contentType contentType. If method is GET/DELETE, must be null
+     * @param headers HTTP header
+     * @param body request body. If method is GET/DELETE, must be null
+     * @param handler response handler
+     */
+    void sendStreamRequest(int method, String url, String token, String contentType, Map<String, String> headers, InputStream body, ResponseHandler handler);
 }
