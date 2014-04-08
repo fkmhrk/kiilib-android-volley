@@ -35,7 +35,41 @@ add the following section to build.gradle in volley
 
 execute the following command
 
-    $ gradle clean uploadArchives
+    $  gradle uploadArchives
+    :compileLint
+    :copyReleaseLint UP-TO-DATE
+    :mergeReleaseProguardFiles
+    :packageReleaseAidl UP-TO-DATE
+    :preBuild
+    :preReleaseBuild
+    :checkReleaseManifest
+    :prepareReleaseDependencies
+    :compileReleaseAidl
+    :compileReleaseRenderscript
+    :generateReleaseBuildConfig
+    :mergeReleaseAssets
+    :generateReleaseResValues
+    :generateReleaseResources
+    :packageReleaseResources
+    :processReleaseManifest
+    :processReleaseResources
+    :generateReleaseSources
+    :compileReleaseJava
+    :processReleaseJavaRes UP-TO-DATE
+    :packageReleaseJar
+    :compileReleaseNdk
+    :packageReleaseJniLibs UP-TO-DATE
+    :packageReleaseLocalJar UP-TO-DATE
+    :packageReleaseRenderscript UP-TO-DATE
+    :bundleRelease
+    :uploadArchives
+    Uploading: com/google/volley/1.0.0/volley-1.0.0.aar to repository remote at file:///<your home>/.m2/repository
+    Transferring 78K from remote
+    Uploaded 78K
+    
+    BUILD SUCCESSFUL
+    
+    Total time: 8.315 secs
 
 install KiiLib-Java on your local maven repository
 ----
