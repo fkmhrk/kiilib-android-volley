@@ -10,6 +10,10 @@ buildscript {
 
 apply plugin: 'android-library'
 
+repositories {
+    mavenLocal()
+}
+ 
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.3"
@@ -36,5 +40,5 @@ android {
 }
 
 dependencies {
-//    compile project(':volley')
+    compile 'com.google:volley:+'
 }
