@@ -7,11 +7,11 @@ This is the Android library for Kii Cloud with volley implementation. This libra
 
 How to add this library on your project
 ==========
-1. Clone
+Step 1. Clone!
 
     git clone https://github.com/fkmhrk/kiilib-android-volley.git
 
-2. Copy m2repository folder to your project
+Step 2. Copy m2repository folder to your project
 
     AppProject
       - app
@@ -19,7 +19,7 @@ How to add this library on your project
       - m2repository
       - build.gradle
 
-3. Add the following entries to your app/build.gradle
+Step 3. Add the following entries to your app/build.gradle
 
     repositories {
         maven {
@@ -33,4 +33,4 @@ How to add this library on your project
         // add other dependencies here
     }
     
-4. Click "Sync Project with Gradle Files" on Android Studio.
+Step 4. Click "Sync Project with Gradle Files" on Android Studio.
