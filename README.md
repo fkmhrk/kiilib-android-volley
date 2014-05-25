@@ -1,120 +1,36 @@
 KiiLib android volley
 ========
 
-This is the library for Kii Cloud Android with volley implementation. This library depends on the following libraries. 
+This is the Android library for Kii Cloud with volley implementation. This library depends on the following libraries. 
 * volley
 * KiiLib-Java
 
-So please install them on your local maven repository
-
-How to install on your local maven repository
+How to add this library on your project
 ==========
-install gradle 1.10 to build volley. 
-----
-go to http://www.gradle.org/
+1. Clone
 
-download gradle-1.10-bin.zip and unzip
+    git clone https://github.com/fkmhrk/kiilib-android-volley.git
 
-add bin to PATH
+2. Copy m2repository folder to your project
 
-install volley on your local maven repository
-----
-clone volley from here https://android.googlesource.com/platform/frameworks/volley/
+    AppProject
+      - app
+        - build.gradle
+      - m2repository
+      - build.gradle
 
-add the following section to build.gradle in volley
+3. Add the following entries to your app/build.gradle
 
-    apply plugin: 'maven'
-    uploadArchives {
-        repositories.mavenDeployer {
-            repository url: "file://$System.env.HOME/.m2/repository"
-            pom.version = '1.0.0'
-            pom.groupId = 'com.google'
-            pom.artifactId = 'volley'
+    repositories {
+        maven {
+            url "../m2repository"
         }
-    } 
+    }
 
-execute the following command
-
-    $  gradle uploadArchives
-    :compileLint
-    :copyReleaseLint UP-TO-DATE
-    :mergeReleaseProguardFiles
-    :packageReleaseAidl UP-TO-DATE
-    :preBuild
-    :preReleaseBuild
-    :checkReleaseManifest
-    :prepareReleaseDependencies
-    :compileReleaseAidl
-    :compileReleaseRenderscript
-    :generateReleaseBuildConfig
-    :mergeReleaseAssets
-    :generateReleaseResValues
-    :generateReleaseResources
-    :packageReleaseResources
-    :processReleaseManifest
-    :processReleaseResources
-    :generateReleaseSources
-    :compileReleaseJava
-    :processReleaseJavaRes UP-TO-DATE
-    :packageReleaseJar
-    :compileReleaseNdk
-    :packageReleaseJniLibs UP-TO-DATE
-    :packageReleaseLocalJar UP-TO-DATE
-    :packageReleaseRenderscript UP-TO-DATE
-    :bundleRelease
-    :uploadArchives
-    Uploading: com/google/volley/1.0.0/volley-1.0.0.aar to repository remote at file:///<your home>/.m2/repository
-    Transferring 78K from remote
-    Uploaded 78K
+    dependencies {
+        compile 'jp.fkmsoft.libs:KiiLib-Android-Volley:2.+'
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        // add other dependencies here
+    }
     
-    BUILD SUCCESSFUL
-    
-    Total time: 8.315 secs
-
-install KiiLib-Java on your local maven repository
-----
-Please see https://github.com/fkmhrk/KiiLib-Java/
-
-install this library on your local maven repository
-----
-    $ sh gradlew uploadArchives
-    Relying on packaging to define the extension of the main artifact has been deprecated and is scheduled to be removed in Gradle 2.0
-    :kiilib:compileLint
-    :kiilib:copyReleaseLint UP-TO-DATE
-    :kiilib:mergeReleaseProguardFiles UP-TO-DATE
-    :kiilib:packageReleaseAidl UP-TO-DATE
-    :kiilib:preBuild
-    :kiilib:preReleaseBuild
-    :kiilib:checkReleaseManifest
-    :kiilib:preDebugBuild
-    :kiilib:preDebugTestBuild
-    :kiilib:prepareComGoogleVolley100Library UP-TO-DATE
-    :kiilib:prepareReleaseDependencies
-    :kiilib:compileReleaseAidl UP-TO-DATE
-    :kiilib:compileReleaseRenderscript UP-TO-DATE
-    :kiilib:generateReleaseBuildConfig UP-TO-DATE
-    :kiilib:mergeReleaseAssets UP-TO-DATE
-    :kiilib:generateReleaseResValues UP-TO-DATE
-    :kiilib:generateReleaseResources UP-TO-DATE
-    :kiilib:mergeReleaseResources UP-TO-DATE
-    :kiilib:processReleaseManifest UP-TO-DATE
-    :kiilib:processReleaseResources UP-TO-DATE
-    :kiilib:generateReleaseSources UP-TO-DATE
-    :kiilib:compileReleaseJava UP-TO-DATE
-    :kiilib:processReleaseJavaRes UP-TO-DATE
-    :kiilib:packageReleaseJar UP-TO-DATE
-    :kiilib:compileReleaseNdk UP-TO-DATE
-    :kiilib:packageReleaseJniLibs UP-TO-DATE
-    :kiilib:packageReleaseLocalJar UP-TO-DATE
-    :kiilib:packageReleaseRenderscript UP-TO-DATE
-    :kiilib:packageReleaseResources UP-TO-DATE
-    :kiilib:bundleRelease UP-TO-DATE
-    :kiilib:uploadArchives
-    Uploading: jp/fkmsoft/libs/KiiLib-Android-Volley/2.0.0/KiiLib-Android-Volley-2.0.0.aar to repository remote at file:///<your home>/.m2/repository
-    Transferring 27K from remote
-    Uploaded 27K
-    
-    BUILD SUCCESSFUL
-    
-    Total time: 7.533 secs
-
+4. Click "Sync Project with Gradle Files" on Android Studio.
