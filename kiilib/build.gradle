@@ -12,13 +12,16 @@ apply plugin: 'android-library'
 apply plugin: 'maven'
 
 repositories {
-    mavenLocal()
+    //mavenLocal()
+   maven {
+      url "../m2repository"
+   }
 }
  
 uploadArchives {
     repositories.mavenDeployer {
         repository url: "file://$System.env.HOME/.m2/repository"
-        pom.version = '2.0.1'
+        pom.version = '2.1.0'
         pom.groupId = 'jp.fkmsoft.libs'
         pom.artifactId = 'KiiLib-Android-Volley'
     }
