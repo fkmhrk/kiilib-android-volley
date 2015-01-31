@@ -78,7 +78,11 @@ class VolleyHTTPClient implements KiiHTTPClient {
                 mAppId, mAppKey, token, "text/plain", headers, body, new Listener<KiiResponse>() {
             @Override
             public void onResponse(KiiResponse result) {
-                handler.onResponse(200, result, result.getEtag());
+                if (result != null) {
+                    handler.onResponse(200, result, result.getEtag());
+                } else {
+                    handler.onResponse(204, null, "");
+                }
             }
         }, new ErrorListener() {
             @Override
