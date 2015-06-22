@@ -21,7 +21,7 @@ repositories {
 uploadArchives {
     repositories.mavenDeployer {
         repository url: "file://$System.env.HOME/.m2/repository"
-        pom.version = '2.3.0'
+        pom.version = '2.3.1'
         pom.groupId = 'jp.fkmsoft.libs'
         pom.artifactId = 'KiiLib-Android-Volley'
     }
@@ -43,7 +43,7 @@ android {
 
 dependencies {
     compile 'com.google:volley:+'
-    compile 'jp.fkmsoft.libs:KiiLib-Java:2.3.0'
+    compile 'jp.fkmsoft.libs:KiiLib-Java:2.3.1'
 }
 
 
