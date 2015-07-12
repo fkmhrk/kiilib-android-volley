@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
 
@@ -12,7 +12,7 @@ apply plugin: 'android-library'
 apply plugin: 'maven'
 
 repositories {
-    //mavenLocal()
+    jcenter()
    maven {
       url "../m2repository"
    }
@@ -28,8 +28,8 @@ uploadArchives {
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     sourceSets {
         instrumentTest {
@@ -41,9 +41,13 @@ android {
     }
 }
 
+configurations {
+    compile.exclude group: 'org.json', module: 'commons'
+}
+
 dependencies {
-    compile 'com.google:volley:+'
-    compile 'jp.fkmsoft.libs:KiiLib-Java:2.3.1'
+    compile 'com.android:volley:1.1.0'
+    compile 'jp.fkmsoft.libs:KiiLib-Java-Core:3.0.0'
 }
 
 

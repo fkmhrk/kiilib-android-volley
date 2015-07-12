@@ -4,8 +4,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-import jp.fkmsoft.libs.kiilib.http.KiiHTTPClient;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,17 +13,17 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 
-class VolleyHTTPClient implements KiiHTTPClient {
+import jp.fkmsoft.libs.kiilib.client.KiiHTTPClient;
+import jp.fkmsoft.libs.kiilib.entities.KiiContext;
+
+public class VolleyHTTPClient implements KiiHTTPClient {
 
     private final RequestQueue mQueue;
-    private final String mAppId;
-    private final String mAppKey;
+    private final KiiContext mContext;
 
-
-    VolleyHTTPClient(RequestQueue queue, String appId, String appKey) {
-        this.mQueue = queue;
-        this.mAppId = appId;
-        this.mAppKey = appKey;
+    public VolleyHTTPClient(RequestQueue queue, KiiContext context) {
+        mQueue = queue;
+        mContext = context;
     }
     
     @Override
@@ -36,7 +34,7 @@ class VolleyHTTPClient implements KiiHTTPClient {
         int volleyMethod = toVolleyMethod(method);
         
         KiiRequest request = new KiiRequest(volleyMethod, url,
-                mAppId, mAppKey, token, contentType, headers, body, new Listener<KiiResponse>() {
+                mContext.getAppId(), mContext.getAppKey(), token, contentType, headers, body, new Listener<KiiResponse>() {
             @Override
             public void onResponse(KiiResponse result) {
                 if (result != null) {
@@ -75,7 +73,7 @@ class VolleyHTTPClient implements KiiHTTPClient {
         int volleyMethod = toVolleyMethod(method);
         
         KiiRequest request = new KiiRequest(volleyMethod, url,
-                mAppId, mAppKey, token, "text/plain", headers, body, new Listener<KiiResponse>() {
+                mContext.getAppId(), mContext.getAppKey(), token, "text/plain", headers, body, new Listener<KiiResponse>() {
             @Override
             public void onResponse(KiiResponse result) {
                 if (result != null) {
@@ -115,7 +113,7 @@ class VolleyHTTPClient implements KiiHTTPClient {
         int volleyMethod = toVolleyMethod(method);
         
         KiiStreamRequest request = new KiiStreamRequest(volleyMethod, url,
-                mAppId, mAppKey, token, contentType, headers, body, new Listener<KiiResponse>() {
+                mContext.getAppId(), mContext.getAppKey(), token, contentType, headers, body, new Listener<KiiResponse>() {
             @Override
             public void onResponse(KiiResponse result) {
                 handler.onResponse(200, result, result.getEtag());
