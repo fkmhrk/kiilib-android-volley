@@ -1,14 +1,14 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 repositories {
@@ -21,7 +21,7 @@ repositories {
 uploadArchives {
     repositories.mavenDeployer {
         repository url: "file://$System.env.HOME/.m2/repository"
-        pom.version = '2.3.1'
+        pom.version = '3.0.0'
         pom.groupId = 'jp.fkmsoft.libs'
         pom.artifactId = 'KiiLib-Android-Volley'
     }
