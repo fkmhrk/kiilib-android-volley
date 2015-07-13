@@ -42,12 +42,15 @@ android {
 }
 
 configurations {
-    compile.exclude group: 'org.json', module: 'commons'
+    compile.exclude group: 'org.json', module: 'json'
+    androidTestCompile.exclude group: 'org.json', module: 'json'
 }
 
 dependencies {
     compile 'com.android:volley:1.1.0'
     compile 'jp.fkmsoft.libs:KiiLib-Java-Core:3.0.0'
+    androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java:3.0.0'
+    androidTestCompile 'jp.fkmsoft.libs:KiiLib-Java-BasicEntity:3.0.0'
 }
 
 

@@ -7,12 +7,12 @@ import java.util.Queue;
 
 import org.json.JSONObject;
 
-import jp.fkmsoft.libs.kiilib.http.KiiHTTPClient;
+import jp.fkmsoft.libs.kiilib.client.KiiHTTPClient;
 
 public class MockHTTPClient implements KiiHTTPClient {
 
-    public Queue<Args> argsQueue = new LinkedList<Args>();
-    private Queue<Response> responseQueue = new LinkedList<Response>();
+    public Queue<Args> argsQueue = new LinkedList<>();
+    private Queue<Response> responseQueue = new LinkedList<>();
     
     @Override
     public void sendJsonRequest(int method, String url, String token,
