@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>jp.fkmsoft.libs</groupId>
+  <artifactId>KiiLib-Java-ObjectAPI</artifactId>
+  <version>3.0.0</version>
+  <versioning>
+    <versions>
+      <version>3.0.0</version>
+    </versions>
+    <lastUpdated>20150712100259</lastUpdated>
+  </versioning>
+</metadata>
